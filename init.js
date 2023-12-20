@@ -1,31 +1,17 @@
 let content_w = document.getElementById('content');
-// const apiUrl = 'https://storage.googleapis.com/campus-cvs/00000000000-images-lectures/pokemons.json';
+let dialog = document.querySelector('#info')
+let btnClose = document.querySelector('.close')
 
-// async function fetchPokemonData() {
-//     try {
-//       const response = await fetch(apiUrl);
-  
-//       if (!response.ok) {
-//         throw new Error(`Error: ${response.status}`);
-//       }
-  
-//       const pokemonData = await response.json();
-  
-//       return pokemonData;
-//     } catch (error) {
-//       console.error('Error al consumir la API:', error);
-//       throw error;
-//     }
-//   }
-  
-  function addCard(nom, num, img, tip){
+function addCard(nom, num, img, tip, data){
     let card = document.createElement('div')
     card.classList.add('card')
 
     let nombre =  document.createElement('p')
+    nombre.classList.add('name')
     let nombreText = document.createTextNode(nom)
 
     let numero =  document.createElement('p')
+    numero.classList.add('number')
     let numeroText = document.createTextNode(num)
 
     let image = document.createElement('img')
@@ -33,6 +19,7 @@ let content_w = document.getElementById('content');
     image.classList.add('img')
 
     let tipo =  document.createElement('p')
+    tipo.classList.add('type')
     let tipoText = document.createTextNode(tip)
 
     content_w.appendChild(card)
@@ -42,23 +29,12 @@ let content_w = document.getElementById('content');
     tipo.appendChild(tipoText)
     card.append(nombre, numero, image, tipo)
 
-    
-  }
-
-//   async function fetchAndDisplayPokemonData() {
-//     try {
-//         const pokemonData = await fetchPokemonData();
-//         pokemonData.forEach(element => {
-//             addCard(element.name,element.number, element.ThumbnailImage, element.type)
-//         });
-//         // console.log(pokemonData)
-//     } catch (error) {
-//       console.error('Error al manejar los datos de Pokémon:', error);
-//     }
-//   }
-  
-//   // Llamar a la función principal
-//   fetchAndDisplayPokemonData();
+    card.addEventListener('click',function(){
+        let openDialog = document.querySelector('#info')
+        editDialog(data);
+        openDialog.showModal();
+    })
+}
 
 async function fetchAndDisplayPokemon() {
     const apiUrl = 'https://pokeapi.co/api/v2/pokemon/';
@@ -72,8 +48,7 @@ async function fetchAndDisplayPokemon() {
 
         const pokemonData = await resp.json();
 
-        console.dir(pokemonData.count)
-        for(let i = 1; i < 40; i++){
+        for(let i = 1; i < 20; i++){
             const url = 'https://pokeapi.co/api/v2/pokemon/' + i;
             try {
                 const response = await fetch(url);
@@ -83,11 +58,8 @@ async function fetchAndDisplayPokemon() {
                 }
         
                 const pokemonData = await response.json();
-        
-                for(let i = 0; i < pokemonData.count; i++){
-                    
-                }
-                addCard(pokemonData.name, pokemonData.id, pokemonData.sprites.front_shiny, pokemonData.types)
+                // console.log(pokemonData)
+                addCard(pokemonData.name, pokemonData.id, pokemonData.sprites.front_shiny, "Peso: "+pokemonData.weight, pokemonData)
         
             } catch (err) {
                 console.error('Error al consumir la API:', err);
@@ -100,5 +72,39 @@ async function fetchAndDisplayPokemon() {
     }
 }
 
-// Llamar a la función para mostrar los Pokémon
+function editDialog(data){
+    let lblNombre = document.querySelector('#lblNombre');
+    let lblNumero = document.querySelector('#lblNumero');
+    let img = document.querySelector('#lblImg');
+    let divTipo = document.querySelector('.divTipo');
+    divTipo.innerHTML = '<p>Tipo:</p>';
+    let divHabilidades = document.querySelector('.divHabilidades');
+    divHabilidades.innerHTML = '<p>Habilidades:</p>';
+
+    for(let i = 0; i < data.abilities.length; i++){
+        let p = document.createElement('p')
+        let pText = document.createTextNode(data.abilities[i].ability.name)
+
+        p.appendChild(pText)
+        divHabilidades.appendChild(p)
+    }
+    
+    for(let i = 0; i < data.types.length; i++){
+        let p = document.createElement('p')
+        let pText = document.createTextNode(data.types[i].type.name)
+
+        p.appendChild(pText)
+        divTipo.appendChild(p)
+    }
+
+    lblNombre.innerText = data.name;
+    lblNumero.innerText = data.id;
+    img.src = data.sprites.front_shiny;
+
+}
+
 fetchAndDisplayPokemon();
+
+btnClose.addEventListener('click', function(){
+    dialog.close();
+})

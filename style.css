@@ -5,7 +5,6 @@ header{
     text-align: center;
     background-color: #fff;
     color: #0e0c0c;
-    font-family: monospace;
 }
 
 body{
@@ -13,11 +12,13 @@ body{
     display: grid;
     grid-template-rows: auto auto auto;
     gap: 15px;
+    font-family: Roboto;
 }
 
 .pokedex{
-    font-weight: 700;
+    font-weight: 300;
     font-size: 40px;
+    color: #6e6e6e;
 }
 
 /* ESTILOS DE EL FORMULARIO -- INICIO*/
@@ -62,19 +63,33 @@ input:focus ~ .form_label, .form_input:valid ~ .form_label{
 .form_group:focus ~ .form_label, .form_input:focus{
     border-bottom: 3px solid #006eff;
 }
+
+.name{
+    font-size: 30px;
+    color: #fdfdfd;
+    text-transform: capitalize;
+    font-weight: 700;
+}
+
+.number{
+    font-size: 32px;
+    font-weight: 800;
+    color: #3d597f;
+}
+
+.type{
+    font-size: 16px;
+}
 /* ESTILOS DE FORMULARIO ---- TERMINO */
 
 /* ESTILOS DE CONTENT --INICIO */
 #content{
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    /* grid-template-columns: repeat(3, 1fr);
+    gap: 15px; */
     cursor: pointer;
-    transition: 1s;
-}
-
-.card:hover{
-    transform: scale(1.05);
     transition: 1s;
 }
 
@@ -82,13 +97,66 @@ input:focus ~ .form_label, .form_input:valid ~ .form_label{
     width: 200px;
     height: 200px;
 }
+
+#info{
+    border: none;
+    outline: none;
+    width: 50%;
+    height: 80%;
+    border-radius: 15px;
+    box-shadow: 5px 5px 5px 5px #00000043;
+    background: radial-gradient(circle, #ffcc008e, #d8000070);
+    transition: 1s;
+}
+
+.close{
+    display: grid;
+    align-content: center;
+    justify-content: center;
+    justify-items: center;
+    cursor: pointer;
+    border-radius: 30px;
+    background-color: #ffffff00;
+    color: #0e0c0c;
+    width: 30px;
+    height: 30px;
+}
+
+.close:hover{
+    background-color: #ab0000;
+    color: #fff;
+}
+
 /* ESTILOS DE CONTENT --TERMINO*/
 
 /* ESTILOS DE CARD -- INICIO*/
 .card{
-    border: 2px solid #919191;
+    /* border: 2px solid #bdbdbd; */
     border-radius: 15px;
     text-align: center;
+    transition: 1s;
+    box-shadow: 5px 5px 5px 5px #2626263d;
+    background: radial-gradient(circle, #ffcc008e, #d8000070);
+    width: 300px;
+    aspect-ratio: 3/2;
+    flex-grow: 1;
+}
+
+.card:hover{
+    transform: scale(1.03);
+    transition: 1s;
+}
+
+.info-pokemon{
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+#lblImg{
+    width: 300px;
+    height: 300px;
 }
 /* ESTILOS DE CARD -- TERMINO*/
 

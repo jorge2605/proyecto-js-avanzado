@@ -6,14 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>Pokedex</title>
-    <link rel="preconnect" href="https://storage.googleapis.com/" />
+    <!-- Google Fonts, Roboto -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Google Fonts, Roboto -->
 </head>
 
 <body>
     <header>
         <div>
-            <h1 class="pokedex">Proyect</h1>
+            <h1 class="pokedex">POKEDEX</h1>
             <div>
                 <form class="form">
                     <div class="form_group">
@@ -35,6 +41,22 @@
             </div> -->
         </div>
     </section>
+    <dialog id="info">
+        <div class="close">
+            <p id="btnClose">X</p>
+        </div>
+        <div class="info-pokemon">
+            <p id="lblNombre">nombre</p>
+            <p id="lblNumero">numero</p>
+            <img src="" alt="" id="lblImg">
+            <div class="divTipo">
+                <p>Tipo:</p>
+            </div>
+            <div class="divHabilidades">
+                <p>Habilidades:</p>
+            </div>
+        </div>
+    </dialog>
     <footer>
         <div class="footer">
             
