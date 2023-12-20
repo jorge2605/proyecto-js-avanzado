@@ -1,0 +1,101 @@
+header{
+    display: grid;
+    grid-template-rows: 50% 50%;
+    justify-content: center;
+    text-align: center;
+    background-color: #fff;
+    color: #0e0c0c;
+    font-family: monospace;
+}
+
+body{
+    background-color: #fff;
+    display: grid;
+    grid-template-rows: auto auto auto;
+    gap: 15px;
+}
+
+.pokedex{
+    font-weight: 700;
+    font-size: 40px;
+}
+
+/* ESTILOS DE EL FORMULARIO -- INICIO*/
+.form_group{
+    position: relative;
+}
+
+.form_group .form_input{
+    width: 350px;
+    height: 60px;
+    border-radius: 6px;
+    font-size: 18px;
+    padding: 0 15px;
+    border: none;
+    border-bottom: 3px solid #b4b4b4;
+    background: transparent;
+    color: #2c2c2c;
+    outline: none;
+    transition: .3s;
+}
+
+.form_group .form_label{
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    transform: translateY(-50%);
+    color: #2c2c2c;
+    font-size: 19px;
+    pointer-events: none;
+    transition: 0.3s;
+}
+
+input:focus ~ .form_label, .form_input:valid ~ .form_label{
+    top: 0;
+    left: 15px;
+    font-size: 16px;
+    padding: 0 2px;
+    background: #fff;
+    color: rgb(3, 112, 255);
+}
+
+.form_group:focus ~ .form_label, .form_input:focus{
+    border-bottom: 3px solid #006eff;
+}
+/* ESTILOS DE FORMULARIO ---- TERMINO */
+
+/* ESTILOS DE CONTENT --INICIO */
+#content{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    cursor: pointer;
+    transition: 1s;
+}
+
+.card:hover{
+    transform: scale(1.05);
+    transition: 1s;
+}
+
+.img{
+    width: 200px;
+    height: 200px;
+}
+/* ESTILOS DE CONTENT --TERMINO*/
+
+/* ESTILOS DE CARD -- INICIO*/
+.card{
+    border: 2px solid #919191;
+    border-radius: 15px;
+    text-align: center;
+}
+/* ESTILOS DE CARD -- TERMINO*/
+
+/* ESTILOS DE FOOTER -- INICIO*/
+.footer{
+    width: 100%;
+    background-color: #006eff;
+    height: 100px;
+}
+/* ESTILOS DE FOOTER -- TERMINO*/
