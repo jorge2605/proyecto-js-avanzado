@@ -105,7 +105,7 @@ input:focus ~ .form_label, .form_input:valid ~ .form_label{
     height: 80%;
     border-radius: 15px;
     box-shadow: 5px 5px 5px 5px #00000043;
-    background: radial-gradient(circle, #ffcc008e, #d8000070);
+    background: radial-gradient(circle, #9dbdf8, #00559be5);
     transition: 1s;
 }
 
@@ -155,8 +155,44 @@ input:focus ~ .form_label, .form_input:valid ~ .form_label{
 }
 
 #lblImg{
-    width: 300px;
-    height: 300px;
+    width: 250px;
+    height: 250px;
+    justify-self: center;
+    align-self: center;
+}
+
+.divTipo, .divHabilidades{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.divTipo p, .divHabilidades p{
+    background-color: #00e6459a;
+    color: #fff;
+    padding: 5px 15px;
+    font-weight: 500;
+    font-size: 16px;
+    text-transform: capitalize;
+}
+
+.divHabilidades p{
+    background-color: #ff494983;
+}
+
+.divTipo h2, .divHabilidades h2{
+    font-size: 20px;
+    font-weight: 600;
+    color: #ffffff;
+    background-color: #00e645e5;
+    border-radius: 10px;
+    padding: 5px 15px;
+}
+
+.divHabilidades h2{
+    background-color: #ff4949;
 }
 /* ESTILOS DE CARD -- TERMINO*/
 

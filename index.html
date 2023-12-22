@@ -21,13 +21,12 @@
         <div>
             <h1 class="pokedex">POKEDEX</h1>
             <div>
-                <form class="form">
+                <!-- <form class="form"> -->
                     <div class="form_group">
-                        <input type="text" id="txtSearch" class="form_input" required>
-                        <label for="txtSearch" class="form_label">Buscar:</label>
+                        <input type="text" id="txtSearch" class="form_input"  onkeypress="searchPokemonById(event)">
+                        <label for="txtSearch" class="form_label">Buscar por Nombre/Id:</label>
                     </div>
-                </form>
-
+                <!-- </form> -->
             </div>
         </div>
     </header>
@@ -50,10 +49,10 @@
             <p id="lblNumero">numero</p>
             <img src="" alt="" id="lblImg">
             <div class="divTipo">
-                <p>Tipo:</p>
+                <h2>Tipo:</h2>
             </div>
             <div class="divHabilidades">
-                <p>Habilidades:</p>
+                <h2>Habilidades:</h2>
             </div>
         </div>
     </dialog>

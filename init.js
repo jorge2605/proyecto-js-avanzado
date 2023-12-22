@@ -1,6 +1,7 @@
 let content_w = document.getElementById('content');
 let dialog = document.querySelector('#info')
 let btnClose = document.querySelector('.close')
+let btnBuscar = document.querySelector('#txtSearch');
 
 function addCard(nom, num, img, tip, data){
     let card = document.createElement('div')
@@ -74,12 +75,15 @@ async function fetchAndDisplayPokemon() {
 
 function editDialog(data){
     let lblNombre = document.querySelector('#lblNombre');
+    lblNombre.classList.add('name')
     let lblNumero = document.querySelector('#lblNumero');
+    lblNumero.classList.add('number')
     let img = document.querySelector('#lblImg');
+    img.classList.add('lblImg')
     let divTipo = document.querySelector('.divTipo');
-    divTipo.innerHTML = '<p>Tipo:</p>';
+    divTipo.innerHTML = '<h2>Tipo:</h2>';
     let divHabilidades = document.querySelector('.divHabilidades');
-    divHabilidades.innerHTML = '<p>Habilidades:</p>';
+    divHabilidades.innerHTML = '<h2>Habilidades:</h2>';
 
     for(let i = 0; i < data.abilities.length; i++){
         let p = document.createElement('p')
@@ -101,6 +105,28 @@ function editDialog(data){
     lblNumero.innerText = data.id;
     img.src = data.sprites.front_shiny;
 
+}
+
+async function searchPokemonById(event){
+    let id = btnBuscar.value;
+    console.dir(btnBuscar)
+    if (event.key === 'Enter') {
+        const apiUrl = 'https://pokeapi.co/api/v2/pokemon/'+id;
+
+        try {
+            const resp = await fetch(apiUrl);
+
+            if (!resp.ok) {
+                throw new Error(`Error: ${resp.status}`);
+            }
+
+            const pokemonData = await resp.json();
+            content_w.innerHTML = ''
+            addCard(pokemonData.name, pokemonData.id, pokemonData.sprites.front_shiny, "Peso: "+pokemonData.weight, pokemonData)
+        }catch(error){
+            console.log(error)
+        }
+    }
 }
 
 fetchAndDisplayPokemon();
